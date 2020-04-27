@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/MyFoodPrint-API-Java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,8 +26,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1b5z71Pg2aK3zU4eey7LW5knK4Y" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -39,15 +49,15 @@
       <recent name="C:\Users\AMC\IdeaProjects\foodprintapi" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -61,25 +71,29 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587936571888</updated>
-      <workItem from="1587936573485" duration="2885000" />
-      <workItem from="1587991788516" duration="606000" />
+      <workItem from="1587936573485" duration="2447000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="WindowStateProjectService">
+    <state x="79" y="184" key="#Project_Structure" timestamp="1587956677885">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="79" y="184" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1587956677885" />
+    <state x="267" y="280" key="FileChooserDialogImpl" timestamp="1587956672851">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="267" y="280" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1587956672851" />
+    <state x="490" y="181" key="Maven.ArtifactSearchDialog" timestamp="1587958497080">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="490" y="181" key="Maven.ArtifactSearchDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1587958497080" />
+    <state x="0" y="168" key="SettingsEditor" timestamp="1587956248873">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="0" y="168" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1587956248873" />
   </component>
 </project>
