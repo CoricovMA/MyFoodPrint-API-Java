@@ -1,32 +1,99 @@
 package com.foodprint;
 
-import org.json.JSONObject;
+import com.foodprint.Ingredients.Ingredient;
+import com.foodprint.database.Database;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.client.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.concurrent.ExecutionException;
 
-@WebServlet("/calculate/*")
+@WebServlet(
+        name = "MyFoodPrint-API",
+        description = "MyFoodPrint API using HttpServlet",
+        urlPatterns = {
+                "/calculate/*",
+                "/list/*",
+                "/"
+        },
+        loadOnStartup = 1
+)
 public class TestServlet extends HttpServlet {
 
-    JSONObject jsonObject = new JSONObject();
-    Map<String, String> map = new HashMap<>();
+    /*
+    TODO Add object which handles ingredients parsing and shit :)
+     */
+
+    private static Database database;
+
+    @Override
+    public void init() {
+        database = Database.getInstance();
+    }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpGet get = new HttpGet();
         response.setContentType("text/html");
-        map.put("hello", "world");
-        jsonObject.append("test", map);
+
+        String action = request.getServletPath();
+
+        switch(action){
+            case "/":
+                doHome(request, response);
+                break;
+            case "/calculate":
+                doCalculate(request, response);
+                break;
+            case "/list":
+                doList(request, response);
+                break;
+            default:
+                doError(response);
+                break;
+        }
+
         PrintWriter out = response.getWriter();
-        out.println(request.getRequestURI());
         out.println("</br>");
-        out.println(jsonObject.toString(4));
+        out.println(request.getServletPath());
+        out.println("</br>");
+        out.println(request.getServletContext().getContextPath());
+        out.println("</br>");
+        out.println(request.getRequestURL());
+        out.println("</br>");
+        out.println(request.getRequestURI());
         out.close();
     }
 
+    private void doCalculate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.getWriter().println("calculating");
+        response.getWriter().println(System.getProperty("user.dir"));
+        response.getWriter().println("</br>");
+        PrintWriter out = response.getWriter();
+        Ingredient ingr = new Ingredient("hi", "there");
+        try {
+            database.insertIngredient(ingr);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        response.getWriter().println(ingr);
+    }
+
+    private void doList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.getWriter().println(System.getProperty("user.dir"));
+        File f = new File("/var/lib/jetty/resources/myfoodprint_db_config.json");
+
+    }
+
+    private void doHome(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.getWriter().println("home");
+    }
+
+    private void doError(HttpServletResponse response){
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    }
 }

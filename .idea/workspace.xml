@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MyFoodPrint-API-Java.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/util/ObjectParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/conf/myfoodprint_db_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildTools/rebuild_redeploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/BuildTools/rebuild_redeploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,10 +42,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ConUApi" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -48,18 +54,45 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\AMC\IdeaProjects\foodprintapi" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\conf" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\java\com\foodprint\database" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\config" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\api" />
+    </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="testin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.foodprint.testin" />
+      <module name="MyApi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.foodprint.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.testin" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -72,11 +105,29 @@
       <option name="presentableId" value="Default" />
       <updated>1587936571888</updated>
       <workItem from="1587936573485" duration="2447000" />
+      <workItem from="1588019633693" duration="12938000" />
+      <workItem from="1588118788365" duration="14071000" />
+      <workItem from="1588191802146" duration="519000" />
+      <workItem from="1588192399675" duration="1293000" />
+      <workItem from="1588193711426" duration="442000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="79" y="184" key="#Project_Structure" timestamp="1587956677885">
@@ -95,5 +146,32 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="168" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1587956248873" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java</url>
+          <line>11</line>
+          <properties field="name" class="com.foodprint.Ingredients.Ingredient" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
