@@ -1,34 +1,32 @@
 package com.foodprint;
 
-import com.foodprint.Ingredients.Ingredient;
-import com.foodprint.util.ObjectParser;
-import com.google.gson.JsonObject;
-import org.json.JSONObject;
+import com.foodprint.util.StringParser;
+import org.languagetool.JLanguageTool;
+import org.languagetool.language.BritishEnglish;
+import org.languagetool.rules.RuleMatch;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.List;
 
 public class testin {
 
-    public static void main(String[] args){
-        try {
-            FileInputStream fileInputStream = new FileInputStream("C:\\Users\\AMC\\IdeaProjects\\MyFoodPrint-API-Java\\src\\main\\resources\\food_json\\all_ingredients.json");
-            Scanner scanner = new Scanner(fileInputStream);
-            StringBuilder sb = new StringBuilder();
-            while(scanner.hasNext()){
-                sb.append(scanner.nextLine().trim());
+    public static void main(String[] args) throws InterruptedException {
+        StringParser parse = StringParser.getInstance();
+        // comment in to use statistical ngram data:
+        //langTool.activateLanguageModelRules(new File("/data/google-ngram-data"));
+        List matches = null;
+        Object [] mat;
+        Thread.sleep(1);
+        String [] checkin = {"1 kg chiken", "1 kg beeef", "1 tbsp cabage"};
+        for(int i = 0 ; i < 2000; i ++) {
+            for (String ingr : checkin) {
+                long startTime = System.currentTimeMillis();
+                matches = parse.getMatches(ingr);
+                System.out.println((float) (System.currentTimeMillis() - startTime));
             }
-
-            System.out.println(sb.toString());
-            JSONObject jsonObject = new JSONObject(sb.toString());
-           
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+
+        System.out.println("hello world");
     }
 }
