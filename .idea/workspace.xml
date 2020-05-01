@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/util/ObjectParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/conf/myfoodprint_db_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/conf/myfoodprint_firebase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/food_json/all_ingredients.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildTools/rebuild_redeploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/BuildTools/rebuild_redeploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,21 +40,22 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ConUApi" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\AMC\IdeaProjects\foodprintapi" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\conf" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\food_json" />
       <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources" />
+      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\conf" />
       <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\java\com\foodprint\database" />
       <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\resources\config" />
-      <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AMC\IdeaProjects\foodprintapi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -110,6 +106,7 @@
       <workItem from="1588191802146" duration="519000" />
       <workItem from="1588192399675" duration="1293000" />
       <workItem from="1588193711426" duration="442000" />
+      <workItem from="1588299866603" duration="3564000" />
     </task>
     <servers />
   </component>
@@ -150,11 +147,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java</url>
           <line>16</line>

@@ -3,12 +3,13 @@ package com.foodprint;
 import com.foodprint.Ingredients.Ingredient;
 import com.foodprint.database.Database;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.concurrent.ExecutionException;
 
 @WebServlet(
@@ -40,7 +41,7 @@ public class TestServlet extends HttpServlet {
 
         String action = request.getServletPath();
 
-        switch(action){
+        switch (action) {
             case "/":
                 doHome(request, response);
                 break;
@@ -74,11 +75,11 @@ public class TestServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Ingredient ingr = new Ingredient("hi", "there");
         try {
-            database.insertIngredient(ingr);
+            database.insertIngredient(ingr, request, response);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            out.println("Execution error \n" + e);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            out.println("Interrupted error \n" + e);
         }
         response.getWriter().println(ingr);
     }
@@ -93,7 +94,7 @@ public class TestServlet extends HttpServlet {
         response.getWriter().println("home");
     }
 
-    private void doError(HttpServletResponse response){
+    private void doError(HttpServletResponse response) {
         response.setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
 }

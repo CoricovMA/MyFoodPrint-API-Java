@@ -14,9 +14,10 @@ import com.google.firebase.cloud.FirestoreClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class Database {
@@ -33,13 +34,16 @@ public class Database {
 
         try {
 
-            FileInputStream serviceAccount = new FileInputStream("/var/lib/jetty/resources/myfoodprint_db_config.json");
-            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+
+            FileInputStream serviceAccount =
+                    new FileInputStream("/var/lib/jetty/resources/myfoodprint_firebase.json");
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(credentials)
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setDatabaseUrl("https://myfoodprint-29dfa.firebaseio.com")
                     .build();
 
             FirebaseApp.initializeApp(options);
+
 
         } catch (Exception e) {
 
@@ -55,20 +59,19 @@ public class Database {
     }
 
 
-    public static synchronized Database getInstance(){
+    public static synchronized Database getInstance() {
 
-        if(instance == null){
+        if (instance == null) {
             instance = new Database();
         }
 
         return instance;
     }
 
-    public void insertIngredient(Ingredient ingredient) throws ExecutionException, InterruptedException {
+    public void insertIngredient(Ingredient ingredient, HttpServletRequest request, HttpServletResponse response) throws ExecutionException, InterruptedException, IOException {
         System.out.println(ingredient);
-        ApiFuture<DocumentReference> addedDocRef = ingredients.add(ObjectParser.getObjectMap(ingredient));
-        addedDocRef.get();
-
+        ApiFuture<WriteResult> future = users.document("LA").set(ObjectParser.getObjectMap(ingredient));
+        response.getWriter().println("Update time : " + future.get().getUpdateTime());
     }
 
 }
