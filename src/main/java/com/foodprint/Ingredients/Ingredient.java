@@ -12,13 +12,13 @@ public class Ingredient extends BaseFoodPrintObject {
     private String name;
 
     @JsonProperty("calories")
-    private String calories;
+    private float calories;
 
-    @JsonProperty("co2_eq")
-    private String co2Equivalent;
+    @JsonProperty("co2_per_kg")
+    private float co2Equivalent;
 
     @JsonProperty("car_miles_eq")
-    private String carMilesEquivalent;
+    private float carMilesEquivalent;
 
     @JsonProperty("food_group")
     private String foodGroup;
@@ -26,15 +26,22 @@ public class Ingredient extends BaseFoodPrintObject {
     @JsonProperty("food_subgroup")
     private String foodSubGroup;
 
+    @JsonProperty("energy_usage")
+    private float energyUsage;
+
+    @JsonProperty("water_usage")
+    private float waterUsage;
+
     // set to empty string vs null.
     // empty string shows up in jon, null does not
     public Ingredient(){
-        this.calories = "";
-        this.carMilesEquivalent = "";
-        this.co2Equivalent = "";
+        this.calories = 0;
+        this.carMilesEquivalent = 0;
+        this.co2Equivalent = 0;
         this.foodGroup = "";
         this.foodSubGroup = "";
         this.name = "";
+        this.energyUsage = 0;
     }
 
     public Ingredient(JSONObject jsonObject) throws IOException {
@@ -55,45 +62,60 @@ public class Ingredient extends BaseFoodPrintObject {
         this.setName(name);
     }
 
-    public Ingredient(String name, String calories){
+    public Ingredient(String name, float calories){
         this(name);
         this.setCalories(calories);
     }
 
-    public Ingredient(String name, String calories, String co2Equivalent){
+    public Ingredient(String name, float calories, float co2Equivalent){
         this(name, calories);
         this.setCo2Equivalent(co2Equivalent);
     }
 
-    public Ingredient(String name, String calories, String co2Equivalent, String carMilesEquivalent){
+    public Ingredient(String name, float calories, float co2Equivalent, float carMilesEquivalent){
         this(name, calories, co2Equivalent);
         this.setCarMilesEquivalent(carMilesEquivalent);
     }
 
-    public Ingredient(String name, String calories, String co2Equivalent, String carMilesEquivalent, String foodGroup){
+    public Ingredient(String name, float calories, float co2Equivalent, float carMilesEquivalent, String foodGroup){
         this(name, calories, co2Equivalent, carMilesEquivalent);
         this.setFoodGroup(foodGroup);
     }
 
-    public Ingredient(String name, String calories, String co2Equivalent,
-                      String carMilesEquivalent, String foodGroup, String foodSubGroup){
+    public Ingredient(String name, float calories, float co2Equivalent,
+                      float carMilesEquivalent, String foodGroup, String foodSubGroup){
         this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup);
         this.setFoodSubGroup(foodSubGroup);
+    }
+
+    public Ingredient(String name, float calories, float co2Equivalent,
+                      float carMilesEquivalent, String foodGroup, String foodSubGroup, float energyUsage){
+        this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup, foodSubGroup);
+        this.setEnergyUsage(energyUsage);
+    }
+
+    public Ingredient(String name, float calories, float co2Equivalent,
+                      float carMilesEquivalent, String foodGroup, String foodSubGroup, float energyUsage, float waterUsage){
+        this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup, foodSubGroup, energyUsage);
+        this.setWaterUsage(waterUsage);
     }
 
     public void setName(String name){
         this.name = name;
     }
+    public void setEnergyUsage(float energyUsage){
+        this.energyUsage = energyUsage;
+    }
 
-    public void setCalories(String calories){
+    public void setCalories(float calories){
         this.calories = calories;
     }
 
-    public void setCo2Equivalent(String co2Equivalent){
+    public void setCo2Equivalent(float co2Equivalent){
         this.co2Equivalent = co2Equivalent;
     }
 
-    public void setCarMilesEquivalent(String carMilesEquivalent){
+    public void setCarMilesEquivalent(float carMilesEquivalent){
         this.carMilesEquivalent = carMilesEquivalent;
     }
 
@@ -106,19 +128,19 @@ public class Ingredient extends BaseFoodPrintObject {
     }
 
 
-    private String getName(){
+    public String getName(){
         return this.name;
     }
 
-    private String getCalories(){
+    private float getCalories(){
         return this.calories;
     }
 
-    private String getCo2Equivalent(){
+    private float getCo2Equivalent(){
         return this.co2Equivalent;
     }
 
-    private String getCarMilesEquivalent(){
+    private float getCarMilesEquivalent(){
         return this.carMilesEquivalent;
     }
 
@@ -128,5 +150,17 @@ public class Ingredient extends BaseFoodPrintObject {
 
     private String getFoodSubGroup(){
         return this.foodSubGroup;
+    }
+
+    public float getEnergyUsage() {
+        return energyUsage;
+    }
+
+    public float getWaterUsage() {
+        return waterUsage;
+    }
+
+    public void setWaterUsage(float waterUsage) {
+        this.waterUsage = waterUsage;
     }
 }

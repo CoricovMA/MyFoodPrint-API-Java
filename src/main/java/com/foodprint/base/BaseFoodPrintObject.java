@@ -24,7 +24,7 @@ public abstract class BaseFoodPrintObject {
         return objectString;
     }
 
-    protected static ObjectMapper getJsonMapper(){
+    public static ObjectMapper getJsonMapper(){
         return jsonMapper;
     }
 

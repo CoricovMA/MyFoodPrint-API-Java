@@ -73,7 +73,7 @@ public class TestServlet extends HttpServlet {
         response.getWriter().println(System.getProperty("user.dir"));
         response.getWriter().println("</br>");
         PrintWriter out = response.getWriter();
-        Ingredient ingr = new Ingredient("hi", "there");
+        Ingredient ingr = new Ingredient("hi", 0);
         try {
             database.insertIngredient(ingr, request, response);
         } catch (ExecutionException e) {
