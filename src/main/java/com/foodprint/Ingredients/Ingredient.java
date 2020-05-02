@@ -55,6 +55,8 @@ public class Ingredient extends BaseFoodPrintObject {
         this.setCarMilesEquivalent(tempIngredient.getCarMilesEquivalent());
         this.setFoodGroup(tempIngredient.getFoodGroup());
         this.setFoodSubGroup(tempIngredient.getFoodSubGroup());
+        this.setWaterUsage(tempIngredient.getWaterUsage());
+        this.setEnergyUsage(tempIngredient.getEnergyUsage());
     }
 
     public Ingredient(String name){
