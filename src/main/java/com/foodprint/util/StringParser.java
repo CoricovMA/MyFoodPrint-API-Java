@@ -8,7 +8,6 @@ import org.languagetool.language.BritishEnglish;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class StringParser {
 
@@ -26,7 +25,7 @@ public class StringParser {
         languageTool = new JLanguageTool(new AmericanEnglish());
         currentLanguage = LANGUAGE.AMERICAN_ENGLISH;
         logger.info("Initialized language tool to American english (default).");
-        logger.info("Doing check to instantiate object and make consequent checks faster.");
+        logger.info("Doing first check for good subsequent speed.");
         try {
             languageTool.check("test");
         } catch (IOException e) {
@@ -42,20 +41,23 @@ public class StringParser {
                     return;
                 }
                 languageTool = new JLanguageTool(new AmericanEnglish());
-                currentLanguage = LANGUAGE.AMERICAN_ENGLISH;
                 break;
             case BRITISH_ENGLISH:
                 if (desiredLanguage == currentLanguage) {
                     return;
                 }
                 languageTool = new JLanguageTool(new BritishEnglish());
-                currentLanguage = LANGUAGE.BRITISH_ENGLISH;
                 break;
             default:
                 languageTool = new JLanguageTool(new AmericanEnglish());
-                currentLanguage = LANGUAGE.AMERICAN_ENGLISH;
                 break;
         }
+
+        this._setLanguage(desiredLanguage);
+    }
+
+    private void _setLanguage(LANGUAGE desiredLanguage){
+        currentLanguage = desiredLanguage;
     }
 
     public static StringParser getInstance() {

@@ -2,23 +2,33 @@ package com.foodprint.Ingredients;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.foodprint.base.BaseFoodPrintObject;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+@JsonPropertyOrder({"name",
+                    "calories",
+                    "co2_per_kg",
+                    "car_miles_eq",
+                    "food_group",
+                    "food_subgroup",
+                    "energy_usage",
+                    "water_usage"
+})
 public class Ingredient extends BaseFoodPrintObject {
     @JsonProperty("name")
     private String name;
 
     @JsonProperty("calories")
-    private float calories;
+    private double calories;
 
     @JsonProperty("co2_per_kg")
-    private float co2Equivalent;
+    private double co2Equivalent;
 
     @JsonProperty("car_miles_eq")
-    private float carMilesEquivalent;
+    private double carMilesEquivalent;
 
     @JsonProperty("food_group")
     private String foodGroup;
@@ -27,10 +37,10 @@ public class Ingredient extends BaseFoodPrintObject {
     private String foodSubGroup;
 
     @JsonProperty("energy_usage")
-    private float energyUsage;
+    private double energyUsage;
 
     @JsonProperty("water_usage")
-    private float waterUsage;
+    private double waterUsage;
 
     // set to empty string vs null.
     // empty string shows up in jon, null does not
@@ -64,40 +74,40 @@ public class Ingredient extends BaseFoodPrintObject {
         this.setName(name);
     }
 
-    public Ingredient(String name, float calories){
+    public Ingredient(String name, double calories){
         this(name);
         this.setCalories(calories);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent){
+    public Ingredient(String name, double calories, double co2Equivalent){
         this(name, calories);
         this.setCo2Equivalent(co2Equivalent);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent, float carMilesEquivalent){
+    public Ingredient(String name, double calories, double co2Equivalent, double carMilesEquivalent){
         this(name, calories, co2Equivalent);
         this.setCarMilesEquivalent(carMilesEquivalent);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent, float carMilesEquivalent, String foodGroup){
+    public Ingredient(String name, double calories, double co2Equivalent, double carMilesEquivalent, String foodGroup){
         this(name, calories, co2Equivalent, carMilesEquivalent);
         this.setFoodGroup(foodGroup);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent,
-                      float carMilesEquivalent, String foodGroup, String foodSubGroup){
+    public Ingredient(String name, double calories, double co2Equivalent,
+                      double carMilesEquivalent, String foodGroup, String foodSubGroup){
         this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup);
         this.setFoodSubGroup(foodSubGroup);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent,
-                      float carMilesEquivalent, String foodGroup, String foodSubGroup, float energyUsage){
+    public Ingredient(String name, double calories, double co2Equivalent,
+                      double carMilesEquivalent, String foodGroup, String foodSubGroup, double energyUsage){
         this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup, foodSubGroup);
         this.setEnergyUsage(energyUsage);
     }
 
-    public Ingredient(String name, float calories, float co2Equivalent,
-                      float carMilesEquivalent, String foodGroup, String foodSubGroup, float energyUsage, float waterUsage){
+    public Ingredient(String name, double calories, double co2Equivalent,
+                      double carMilesEquivalent, String foodGroup, String foodSubGroup, double energyUsage, double waterUsage){
         this(name, calories, co2Equivalent, carMilesEquivalent, foodGroup, foodSubGroup, energyUsage);
         this.setWaterUsage(waterUsage);
     }
@@ -105,19 +115,20 @@ public class Ingredient extends BaseFoodPrintObject {
     public void setName(String name){
         this.name = name;
     }
-    public void setEnergyUsage(float energyUsage){
+
+    public void setEnergyUsage(double energyUsage){
         this.energyUsage = energyUsage;
     }
 
-    public void setCalories(float calories){
+    public void setCalories(double calories){
         this.calories = calories;
     }
 
-    public void setCo2Equivalent(float co2Equivalent){
+    public void setCo2Equivalent(double co2Equivalent){
         this.co2Equivalent = co2Equivalent;
     }
 
-    public void setCarMilesEquivalent(float carMilesEquivalent){
+    public void setCarMilesEquivalent(double carMilesEquivalent){
         this.carMilesEquivalent = carMilesEquivalent;
     }
 
@@ -129,40 +140,41 @@ public class Ingredient extends BaseFoodPrintObject {
         this.foodSubGroup = foodSubGroup;
     }
 
+    public void setWaterUsage(double waterUsage) {
+        this.waterUsage = waterUsage;
+    }
 
     public String getName(){
         return this.name;
     }
 
-    private float getCalories(){
-        return this.calories;
-    }
-
-    private float getCo2Equivalent(){
-        return this.co2Equivalent;
-    }
-
-    private float getCarMilesEquivalent(){
-        return this.carMilesEquivalent;
-    }
-
-    private String getFoodGroup(){
+    public String getFoodGroup(){
         return this.foodGroup;
     }
 
-    private String getFoodSubGroup(){
+    public String getFoodSubGroup(){
         return this.foodSubGroup;
     }
 
-    public float getEnergyUsage() {
+    public double getCalories(){
+        return this.calories;
+    }
+
+    public double getCo2Equivalent(){
+        return this.co2Equivalent;
+    }
+
+    public double getCarMilesEquivalent(){
+        return this.carMilesEquivalent;
+    }
+
+    public double getEnergyUsage() {
         return energyUsage;
     }
 
-    public float getWaterUsage() {
+    public double getWaterUsage() {
         return waterUsage;
     }
 
-    public void setWaterUsage(float waterUsage) {
-        this.waterUsage = waterUsage;
-    }
+
 }

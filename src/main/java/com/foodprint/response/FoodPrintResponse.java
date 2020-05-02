@@ -1,16 +1,16 @@
 package com.foodprint.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.foodprint.base.BaseFoodPrintObject;
 
 /**
  * Method chaining seemed like the correct thing to do in the case of this class
  */
-public class FoodPrintResponse {
+public class FoodPrintResponse extends BaseFoodPrintObject {
 
     public enum Status{
         ERROR,
-        SUCCESS,
-
+        SUCCESS
     }
 
     @JsonProperty("status")
@@ -26,17 +26,17 @@ public class FoodPrintResponse {
     private int totalEmissions;
 
     @JsonProperty("carbon_score")
-    private Float carbonScore;
+    private double carbonScore;
 
     public FoodPrintResponse(){
         this.status = Status.SUCCESS;
-        this.request = new FoodPrintRequest();
+        this.request = new FoodPrintRequest("");
         this.totalCalories = 0;
         this.totalEmissions = 0;
-        this.carbonScore = (float) 0;
+        this.carbonScore = (double) 0;
     }
 
-    public FoodPrintResponse setCarbonScore(Float carbonScore) {
+    public FoodPrintResponse setCarbonScore(double carbonScore) {
         this.carbonScore = carbonScore;
         return this;
     }
@@ -69,5 +69,6 @@ public class FoodPrintResponse {
         this.request = request;
         return this;
     }
+
 
 }
