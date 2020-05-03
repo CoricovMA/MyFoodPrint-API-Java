@@ -1,5 +1,7 @@
 package com.foodprint.servlets;
 
+import com.foodprint.database.Database;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,17 +54,6 @@ public class TestServlet extends HttpServlet implements IServlet {
                 doError(response);
                 break;
         }
-
-        PrintWriter out = response.getWriter();
-        out.println("</br>");
-        out.println(request.getServletPath());
-        out.println("</br>");
-        out.println(request.getServletContext().getContextPath());
-        out.println("</br>");
-        out.println(request.getRequestURL());
-        out.println("</br>");
-        out.println(request.getRequestURI());
-        out.close();
     }
 
     @Override
@@ -82,7 +73,7 @@ public class TestServlet extends HttpServlet implements IServlet {
 
     private void doCalculate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().println("calculating");
-        response.getWriter().println("</br>");
+        response.getWriter().println(Database.getInstance().getIngredient("abalone").toString());
     }
 
     private void doList(HttpServletRequest request, HttpServletResponse response) throws IOException {

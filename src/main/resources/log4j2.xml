@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuration status="info">
     <Properties>
-        <Property name="logdir">/usr/lib/jetty/logs</Property>
+        <Property name="logdir">/var/lib/jetty/logs</Property>
         <Property name="layout">%d [%t] %-5level %logger - %m%n</Property>
     </Properties>
 
@@ -11,7 +11,7 @@
             <PatternLayout pattern="${layout}"/>
         </Console>
 
-        <RollingFile name="MyFile" fileName="${logdir}/app.log"
+        <RollingFile name="logFile" fileName="${logdir}/app.log"
                      filePattern="${logdir}/app-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${layout}"/>
             <Policies>
@@ -27,7 +27,7 @@
     <Loggers>
 
         <Logger name="com.foodprint" level="info" additivity="false">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="logFile"/>
         </Logger>
 
 

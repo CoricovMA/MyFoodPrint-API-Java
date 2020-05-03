@@ -24,4 +24,7 @@ public class IngredientResponse extends BaseFoodPrintObject {
 
     @JsonProperty("errors")
     private List errors;
+
+
+
 }

@@ -1,17 +1,18 @@
 package com.foodprint.database;
 
 import com.foodprint.Ingredients.Ingredient;
-import com.foodprint.util.ObjectParser;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,15 +67,40 @@ public class Database {
         return instance;
     }
 
-    public void reInit(){
+    public void reInit() {
         instance = null;
         instance = new Database();
     }
 
     public void insertIngredient(Ingredient ingredient, HttpServletRequest request, HttpServletResponse response) throws ExecutionException, InterruptedException, IOException {
-        System.out.println(ingredient);
-        ApiFuture<WriteResult> future = users.document("LA").set(ObjectParser.getObjectMap(ingredient));
-        response.getWriter().println("Update time : " + future.get().getUpdateTime());
+
+    }
+
+    public Ingredient getIngredient(String name) throws IOException {
+        logger.info("Fetching ingredient {}.", name);
+        Ingredient ingredientToReturn = null;
+
+        DocumentReference ingredientReference = ingredients.document(name);
+
+        ApiFuture<DocumentSnapshot> future = ingredientReference.get();
+
+        DocumentSnapshot ingredientDoc = null;
+
+        try {
+            ingredientDoc = future.get();
+        } catch (InterruptedException e) {
+            logger.warn("Error getting ingredient.", e);
+        } catch (ExecutionException e) {
+            logger.warn("Error getting ingredient.", e);
+        }
+
+        if (ingredientDoc != null) {
+            JSONObject docJson = new JSONObject(ingredientDoc.getData());
+            ingredientToReturn = new Ingredient(docJson);
+        }
+
+        logger.info("Ingredient {} fetched successfully. {}", name, ingredientToReturn);
+        return ingredientToReturn;
     }
 
 }

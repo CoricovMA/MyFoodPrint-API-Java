@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/errors/FoodPrintErrors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/CalculateServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/IServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/IngredientResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/IngredientResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/TestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/TestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +162,9 @@
       <workItem from="1588299866603" duration="3700000" />
       <workItem from="1588360582205" duration="8336000" />
       <workItem from="1588379821665" duration="7311000" />
-      <workItem from="1588454805656" duration="11439000" />
+      <workItem from="1588454805656" duration="11622000" />
+      <workItem from="1588531722190" duration="1259000" />
+      <workItem from="1588538434971" duration="8812000" />
     </task>
     <servers />
   </component>
@@ -218,11 +214,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java</url>
           <line>47</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
