@@ -59,12 +59,16 @@ public class Database {
 
 
     public static synchronized Database getInstance() {
-
         if (instance == null) {
             instance = new Database();
         }
 
         return instance;
+    }
+
+    public void reInit(){
+        instance = null;
+        instance = new Database();
     }
 
     public void insertIngredient(Ingredient ingredient, HttpServletRequest request, HttpServletResponse response) throws ExecutionException, InterruptedException, IOException {

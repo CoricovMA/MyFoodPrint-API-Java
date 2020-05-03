@@ -2,6 +2,9 @@ package com.foodprint.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.errors.FoodPrintErrors;
+
+import java.util.List;
 
 /**
  * Method chaining seemed like the correct thing to do in the case of this class
@@ -18,6 +21,12 @@ public class FoodPrintResponse extends BaseFoodPrintObject {
 
     @JsonProperty("request")
     private FoodPrintRequest request;
+
+    @JsonProperty("errors")
+    private List<FoodPrintErrors.ERROR> errors;
+
+    @JsonProperty("ingredients")
+    private List IngredientResponse;
 
     @JsonProperty("total_calories")
     private int totalCalories;

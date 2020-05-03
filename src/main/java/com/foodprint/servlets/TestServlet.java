@@ -1,45 +1,42 @@
-package com.foodprint;
-
-import com.foodprint.Ingredients.Ingredient;
-import com.foodprint.database.Database;
+package com.foodprint.servlets;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.concurrent.ExecutionException;
 
 @WebServlet(
         name = "MyFoodPrint-API",
         description = "MyFoodPrint API using HttpServlet",
         urlPatterns = {
                 "/calculate/*",
-                "/list/*",
-                "/"
+                "/list/*"
         },
         loadOnStartup = 1
 )
-public class TestServlet extends HttpServlet {
+public class TestServlet extends HttpServlet implements IServlet {
 
     /*
     TODO Add object which handles ingredients parsing and shit :)
      */
 
-    private static Database database;
 
     @Override
-    public void init() {
-        database = Database.getInstance();
+    public void init(){
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-
         String action = request.getServletPath();
+        response.getWriter().write("Path: " + action + "</br>");
+//        response.getWriter().write("Path after uri: " + request.getRequestURI().substring((request.getRequestURI().indexOf(action) + action.length()+1)) + "</br>");
+        response.getWriter().write("Path: " + request.getPathTranslated() + "</br>");
+        response.getWriter().write("Path: " + request.getRequestURI() + "</br>");
+        response.getWriter().write("Path: " + request.getRequestURL() + "</br>");
+
 
         switch (action) {
             case "/":
@@ -68,26 +65,28 @@ public class TestServlet extends HttpServlet {
         out.close();
     }
 
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    @Override
+    public void doPut(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    @Override
+    public void doDelete(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
     private void doCalculate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().println("calculating");
-        response.getWriter().println(System.getProperty("user.dir"));
         response.getWriter().println("</br>");
-        PrintWriter out = response.getWriter();
-        Ingredient ingr = new Ingredient("hi", 0);
-        try {
-            database.insertIngredient(ingr, request, response);
-        } catch (ExecutionException e) {
-            out.println("Execution error \n" + e);
-        } catch (InterruptedException e) {
-            out.println("Interrupted error \n" + e);
-        }
-        response.getWriter().println(ingr);
     }
 
     private void doList(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().println(System.getProperty("user.dir"));
-        File f = new File("/var/lib/jetty/resources/myfoodprint_db_config.json");
-
     }
 
     private void doHome(HttpServletRequest request, HttpServletResponse response) throws IOException {

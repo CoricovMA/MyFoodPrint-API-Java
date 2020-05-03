@@ -3,6 +3,8 @@ package com.foodprint.Ingredients;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.base.BaseFoodPrintObject;
 
+import java.util.List;
+
 public class IngredientResponse extends BaseFoodPrintObject {
 
     @JsonProperty("name")
@@ -20,4 +22,6 @@ public class IngredientResponse extends BaseFoodPrintObject {
     @JsonProperty("calories")
     private int calories;
 
+    @JsonProperty("errors")
+    private List errors;
 }
