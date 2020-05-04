@@ -60,6 +60,8 @@ public class LogServlet extends HttpServlet implements IServlet {
         } catch (StringIndexOutOfBoundsException e) {
             logger.warn("Error fetching logs {}", request.getServletPath());
         }
+
+        doClear(response);
     }
 
     @Override
@@ -75,6 +77,13 @@ public class LogServlet extends HttpServlet implements IServlet {
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
 
+    }
+
+    @Override
+    public void doClear(HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        out.flush();
+        out.close();
     }
 
     private void getAllLogs(HttpServletRequest request, HttpServletResponse response) throws IOException {

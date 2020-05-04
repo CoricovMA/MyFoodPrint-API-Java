@@ -17,4 +17,6 @@ public interface IServlet {
     void doPut(HttpServletRequest request, HttpServletResponse response);
 
     void doDelete(HttpServletRequest request, HttpServletResponse response);
+
+    void doClear(HttpServletResponse response) throws IOException;
 }

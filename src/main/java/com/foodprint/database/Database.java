@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class Database {
@@ -72,12 +73,8 @@ public class Database {
         instance = new Database();
     }
 
-    public void insertIngredient(Ingredient ingredient, HttpServletRequest request, HttpServletResponse response) throws ExecutionException, InterruptedException, IOException {
-
-    }
-
     public Ingredient getIngredient(String name) throws IOException {
-        logger.info("Fetching ingredient {}.", name);
+        logger.info("Fetching ingredient \"{}\".", name);
         Ingredient ingredientToReturn = null;
 
         DocumentReference ingredientReference = ingredients.document(name);
@@ -86,12 +83,15 @@ public class Database {
 
         DocumentSnapshot ingredientDoc = null;
 
+        long startTime = System.currentTimeMillis();
+        long endTime = 0;
         try {
             ingredientDoc = future.get();
+            endTime = System.currentTimeMillis()-startTime;
         } catch (InterruptedException e) {
-            logger.warn("Error getting ingredient.", e);
+            logger.warn("Interrupted exception while getting ingredient.", e);
         } catch (ExecutionException e) {
-            logger.warn("Error getting ingredient.", e);
+            logger.warn("Execution exception while getting ingredient.", e);
         }
 
         if (ingredientDoc != null) {
@@ -99,8 +99,9 @@ public class Database {
             ingredientToReturn = new Ingredient(docJson);
         }
 
-        logger.info("Ingredient {} fetched successfully. {}", name, ingredientToReturn);
+        logger.info("Ingredient \"{}\" fetched successfully in {} ms.", name, (endTime));
         return ingredientToReturn;
     }
+
 
 }

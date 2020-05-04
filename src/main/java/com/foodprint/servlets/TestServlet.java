@@ -1,13 +1,14 @@
 package com.foodprint.servlets;
 
 import com.foodprint.database.Database;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(
         name = "MyFoodPrint-API",
@@ -23,7 +24,7 @@ public class TestServlet extends HttpServlet implements IServlet {
     /*
     TODO Add object which handles ingredients parsing and shit :)
      */
-
+    private static final Logger logger = LogManager.getLogger(TestServlet.class);
 
     @Override
     public void init(){
@@ -68,6 +69,11 @@ public class TestServlet extends HttpServlet implements IServlet {
 
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    @Override
+    public void doClear(HttpServletResponse response) {
 
     }
 

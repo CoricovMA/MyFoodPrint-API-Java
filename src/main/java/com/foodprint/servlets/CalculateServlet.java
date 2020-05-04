@@ -3,6 +3,7 @@ package com.foodprint.servlets;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class CalculateServlet implements IServlet {
 
@@ -10,6 +11,7 @@ public class CalculateServlet implements IServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        doClear(response);
     }
 
     @Override
@@ -25,5 +27,12 @@ public class CalculateServlet implements IServlet {
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
 
+    }
+
+    @Override
+    public void doClear(HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        out.flush();
+        out.close();
     }
 }
