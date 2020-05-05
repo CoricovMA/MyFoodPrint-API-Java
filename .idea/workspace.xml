@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/IDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tagger/models/README-Models.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/README-Models.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tagger/models/bidirectional-distsim-wsj-0-18.tagger" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/bidirectional-distsim-wsj-0-18.tagger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tagger/models/bidirectional-distsim-wsj-0-18.tagger.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/bidirectional-distsim-wsj-0-18.tagger.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tagger/models/left3words-wsj-0-18.tagger" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/left3words-wsj-0-18.tagger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tagger/models/left3words-wsj-0-18.tagger.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/left3words-wsj-0-18.tagger.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +19,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Arquillian JUnit Test Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -243,6 +238,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="168" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1588625455569" />
+    <state x="636" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1588696612158">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="636" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1588696612158" />
     <state x="953" y="0" width="974" height="1057" key="dock-window-1" timestamp="1588627886547">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
