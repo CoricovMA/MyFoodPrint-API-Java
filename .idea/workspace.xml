@@ -2,9 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da58ffc-b823-4fc6-83b5-38a489d088ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/IDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/IngredientRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/LocalDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/response/ResponseGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/IngredientResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/Ingredients/IngredientResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/AbstractFoodPrintObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/database/IDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/IDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/response/FoodPrintResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/CalculateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/CalculateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/IServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/IServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/LogServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/TestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/servlets/TestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/README-Models.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/bidirectional-distsim-wsj-0-18.tagger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/bidirectional-distsim-wsj-0-18.tagger.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/left3words-wsj-0-18.tagger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/tagger/models/left3words-wsj-0-18.tagger.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/testin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/util/ObjectParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/util/ObjectParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/foodprint/util/StringParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/foodprint/util/StringParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,8 +47,8 @@
         <option value="JUnit5 Test Class" />
         <option value="Arquillian JUnit Test Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,7 +75,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -74,15 +102,27 @@
       <recent name="C:\Users\AMC\IdeaProjects\MyFoodPrint-API-Java\src\main\java\com\foodprint\database" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Application.testin">
     <configuration name="testin" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.foodprint.testin" />
-      <module name="MyFoodPrint-API-Java" />
+      <module name="MyApi" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.foodprint.servlets.*" />
+          <option name="PATTERN" value="com.foodprint.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,18 +168,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -162,6 +190,9 @@
       <workItem from="1588454805656" duration="11622000" />
       <workItem from="1588531722190" duration="1259000" />
       <workItem from="1588538434971" duration="19343000" />
+      <workItem from="1588704080089" duration="31000" />
+      <workItem from="1588709296700" duration="4515000" />
+      <workItem from="1588716128560" duration="7378000" />
     </task>
     <servers />
   </component>
@@ -251,7 +282,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/base/BaseFoodPrintObject.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/interfaces/AbstractFoodPrintObject.java</url>
           <line>19</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -260,15 +291,20 @@
           <line>47</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/foodprint/database/LocalDatabase.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MyFoodPrint_API_Java$IngredientTest.ic" NAME="IngredientTest Coverage Results" MODIFIED="1588385757457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.foodprint.Ingredients.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/MyFoodPrint_API_Java$ObjectParserTest.ic" NAME="ObjectParserTest Coverage Results" MODIFIED="1588384999288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.foodprint.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/MyFoodPrint_API_Java$IngredientTest.ic" NAME="IngredientTest Coverage Results" MODIFIED="1588385757457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.foodprint.Ingredients.*</FILTER>
     </SUITE>
   </component>
 </project>

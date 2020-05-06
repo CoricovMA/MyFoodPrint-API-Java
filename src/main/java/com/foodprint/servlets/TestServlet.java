@@ -1,6 +1,6 @@
 package com.foodprint.servlets;
 
-import com.foodprint.database.Database;
+import com.foodprint.interfaces.IServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -79,7 +79,7 @@ public class TestServlet extends HttpServlet implements IServlet {
 
     private void doCalculate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().println("calculating");
-        response.getWriter().println(Database.getInstance().getIngredient("abalone").toString());
+        response.getWriter().println(database.getIngredient("abalone").toString());
     }
 
     private void doList(HttpServletRequest request, HttpServletResponse response) throws IOException {

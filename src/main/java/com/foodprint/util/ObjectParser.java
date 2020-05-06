@@ -1,6 +1,6 @@
 package com.foodprint.util;
 
-import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.interfaces.AbstractFoodPrintObject;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ObjectParser {
 
-    public static Map getObjectMap(BaseFoodPrintObject foodPrintObject){
+    public static Map getObjectMap(AbstractFoodPrintObject foodPrintObject){
         JSONObject jsonObject = new JSONObject(foodPrintObject.toString());
 
         Map<String, Object> objectMap = new HashMap<>();

@@ -1,5 +1,7 @@
 package com.foodprint.servlets;
 
+import com.foodprint.interfaces.IServlet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

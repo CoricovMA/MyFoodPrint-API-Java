@@ -3,7 +3,7 @@ package com.foodprint.Ingredients;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.interfaces.AbstractFoodPrintObject;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import java.io.IOException;
                     "energy_usage",
                     "water_usage"
 })
-public class Ingredient extends BaseFoodPrintObject {
+public class Ingredient extends AbstractFoodPrintObject {
     @JsonProperty("name")
     private String name;
 

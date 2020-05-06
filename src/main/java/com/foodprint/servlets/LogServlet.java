@@ -1,5 +1,6 @@
 package com.foodprint.servlets;
 
+import com.foodprint.interfaces.IServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,6 +1,5 @@
 package com.foodprint.util;
 
-import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.languagetool.JLanguageTool;
@@ -13,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import edu.stanford.nlp.tagger.*;
 
 public class StringParser {
 
@@ -29,7 +26,6 @@ public class StringParser {
     private static StringParser instance;
     private static JLanguageTool languageTool;
     private static LANGUAGE currentLanguage;
-    private static MaxentTagger tagger = new MaxentTagger();
 
     private StringParser() {
         languageTool = new JLanguageTool(new AmericanEnglish());
@@ -82,10 +78,6 @@ public class StringParser {
         }
 
         this._setLanguage(desiredLanguage);
-    }
-
-    public static MaxentTagger getTagger(){
-        return tagger;
     }
 
     private void _setLanguage(LANGUAGE desiredLanguage) {

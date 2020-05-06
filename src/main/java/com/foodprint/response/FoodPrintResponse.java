@@ -1,7 +1,7 @@
 package com.foodprint.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.interfaces.AbstractFoodPrintObject;
 import com.foodprint.errors.FoodPrintErrors;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Method chaining seemed like the correct thing to do in the case of this class
  */
-public class FoodPrintResponse extends BaseFoodPrintObject {
+public class FoodPrintResponse extends AbstractFoodPrintObject {
 
     public enum Status{
         ERROR,

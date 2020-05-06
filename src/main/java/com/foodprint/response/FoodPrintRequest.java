@@ -1,16 +1,18 @@
 package com.foodprint.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.interfaces.AbstractFoodPrintObject;
+import com.foodprint.interfaces.Request;
+import com.foodprint.util.StringParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FoodPrintRequest extends BaseFoodPrintObject {
+public class FoodPrintRequest extends AbstractFoodPrintObject implements Request {
 
     private List<Object> requestIngredients;
-
+    private static StringParser stringParser = StringParser.getInstance();
 
     @JsonProperty("request_ingredients")
     public List<Object> getRequestIngredients(){

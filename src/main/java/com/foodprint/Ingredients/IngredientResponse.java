@@ -1,11 +1,11 @@
 package com.foodprint.Ingredients;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.foodprint.base.BaseFoodPrintObject;
+import com.foodprint.interfaces.AbstractFoodPrintObject;
 
 import java.util.List;
 
-public class IngredientResponse extends BaseFoodPrintObject {
+public class IngredientResponse extends AbstractFoodPrintObject {
 
     @JsonProperty("name")
     private String name;
