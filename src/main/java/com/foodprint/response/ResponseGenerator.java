@@ -19,5 +19,6 @@ public class ResponseGenerator {
 
     private Request generateRequest(String requestString){
 
+        return null;
     }
 }
