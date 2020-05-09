@@ -61,6 +61,17 @@ public class LocalDatabase implements IDatabase {
         return ingredients;
     }
 
+    @Override
+    public boolean containsKey(String key) {
+        return ingredientsMap.containsKey(key);
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        Ingredient ingredient = (Ingredient)value;
+        return ingredientsMap.containsValue(ingredient);
+    }
+
     public static JSONObject getIngredientsJson() {
         File jsonIngredients = new File("/var/lib/jetty/resources/all_ingredients.json");
 

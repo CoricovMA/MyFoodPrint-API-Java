@@ -3,15 +3,29 @@ package com.foodprint.Ingredients;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.interfaces.AbstractFoodPrintObject;
 
-import java.util.List;
-
 public final class IngredientResponse extends AbstractFoodPrintObject {
+
+    public enum INGREDIENT_STATUS{
+        SUCCESS("Search was successful."),
+        ERROR("Error while getting ingredient."),
+        NOT_FOUND("Ingredient not found");
+
+        private String message;
+
+        INGREDIENT_STATUS(String message){
+            this.message = message;
+        }
+
+        public String getMessage(){
+            return message;
+        }
+    }
 
     @JsonProperty("name")
     private String name;
 
     @JsonProperty("quantity")
-    private int quantity;
+    private double quantity;
 
     @JsonProperty("volume")
     private String volume;
@@ -20,58 +34,70 @@ public final class IngredientResponse extends AbstractFoodPrintObject {
     private double emissions;
 
     @JsonProperty("calories")
-    private int calories;
+    private double calories;
 
-    public IngredientResponse(Builder builder){
-        this.name = builder.name;
-        this.quantity = builder.quantity;
-        this.volume = builder.volume;
-        this.emissions = builder.emissions;
-        this.calories = builder.calories;
+    @JsonProperty("ingredient_status")
+    private INGREDIENT_STATUS status;
+
+    public IngredientResponse(){
+        this.name = "";
+        this.quantity = 0.0;
+        this.volume = "";
+        this.emissions = 0.0;
+        this.calories = 0;
     }
 
-    public static class Builder{
-        private String name;
-        private int quantity;
-        private double emissions;
-        private int calories;
-        private String volume;
+    public IngredientResponse(String name){
+        this.name = name;
+    }
 
-        public static Builder newInstance(){
-            return new Builder();
-        }
 
-        private Builder(){}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public Builder setName(String name){
-            this.name = name;
-            return this;
-        }
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
 
-        public Builder setQuantity(int quantity){
-            this.quantity = quantity;
-            return this;
-        }
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
 
-        public Builder setEmissions(double emissions){
-            this.emissions = emissions;
-            return this;
-        }
+    public void setEmissions(double emissions) {
+        this.emissions = emissions;
+    }
 
-        public Builder setCalories(int calories){
-            this.calories = calories;
-            return this;
-        }
+    public void setStatus(INGREDIENT_STATUS status){
+        this.status = status;
+    }
 
-        public Builder setVolume(String volume){
-            this.volume = volume;
-            return this;
-        }
+    public String getStatus(){
+        return this.status.message;
+    }
 
-        public IngredientResponse build(){
-            return new IngredientResponse(this);
-        }
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
 
+    public String getVolume() {
+        return volume;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getEmissions() {
+        return emissions;
+    }
+
+    public double getCalories() {
+        return calories;
     }
 
 }

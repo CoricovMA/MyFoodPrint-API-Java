@@ -1,6 +1,8 @@
 package com.foodprint.servlets;
 
 import com.foodprint.interfaces.IServlet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +21,14 @@ import java.io.IOException;
         loadOnStartup = 1
 )
 public class StatsServlet extends HttpServlet implements IServlet {
+
+    private static final Logger logger = LogManager.getLogger(StatsServlet.class);
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        long startTime = System.currentTimeMillis();
         response.getWriter().println(getStatistics());
+        logger.info("Stats fetched in {}ms.", System.currentTimeMillis()-startTime);
         System.gc();
     }
 

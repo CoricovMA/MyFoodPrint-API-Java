@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class StringParser {
+public class IngredientParser {
 
     public enum LANGUAGE {
         AMERICAN_ENGLISH,
@@ -22,12 +20,12 @@ public class StringParser {
 
     private static Map<String, Double> volumes = new HashMap<>();
 
-    private static Logger logger = LogManager.getLogger(StringParser.class);
-    private static StringParser instance;
+    private static Logger logger = LogManager.getLogger(IngredientParser.class);
+    private static IngredientParser instance;
     private static JLanguageTool languageTool;
     private static LANGUAGE currentLanguage;
 
-    private StringParser() {
+    private IngredientParser() {
         languageTool = new JLanguageTool(new AmericanEnglish());
         currentLanguage = LANGUAGE.AMERICAN_ENGLISH;
         logger.info("Initialized language tool to American english (default).");
@@ -84,9 +82,9 @@ public class StringParser {
         currentLanguage = desiredLanguage;
     }
 
-    public static StringParser getInstance() {
+    public static IngredientParser getInstance() {
         if (instance == null) {
-            instance = new StringParser();
+            instance = new IngredientParser();
         }
         return instance;
     }
@@ -109,17 +107,23 @@ public class StringParser {
         return matches;
     }
 
-    public String getUnitsFromString(String givenIngredientString) {
-        Pattern p = Pattern.compile("\\d+");
-        Matcher m = p.matcher("1 kg chicken");
-        if (m.find())
-            return m.group();
-        else
-            return null;
+    public double getQuantityFromString(String givenIngredientString) {
+        String[] ingredientStringArr = givenIngredientString.split(" ");
+        double toReturn = 0.0;
+        for(String word: ingredientStringArr){
+            try {
+                toReturn = Double.parseDouble(word);
+                break;
+            } catch (NumberFormatException e){
+
+            }
+        }
+
+        return toReturn;
     }
 
     public String getVolumeFromString(String givenIngredientString) {
-        String[] stringAsArray = removeIntegersFromString(givenIngredientString).split(" ");
+        String[] stringAsArray = removeQuantityFromString(givenIngredientString).split(" ");
         String volumeFromString = null;
         for(String word: stringAsArray){
             if (volumes.containsKey(word)){
@@ -131,12 +135,22 @@ public class StringParser {
         return volumeFromString;
     }
 
-    public static double getQuantityFromVol(String givenVol){
+    public double getQuantityFromVol(String givenVol){
         return volumes.get(givenVol);
     }
 
-    public String removeIntegersFromString(String givenString){
-        return givenString.replaceAll("\\d", "");
+    public String removeQuantityFromString(String givenString){
+        double quantity = getQuantityFromString(givenString);
+
+        if(givenString.contains(String.valueOf(quantity))){
+            givenString = givenString.replace(String.valueOf(quantity), "");
+        }else if(givenString.contains(String.valueOf((int)Math.floor(quantity)))){
+            givenString = givenString.replace(String.valueOf((int)Math.floor(quantity)), "");
+        }else if(quantity % 1 != 0.0){
+            givenString = givenString.replace(String.valueOf(Double.doubleToLongBits(quantity)), "");
+        }
+
+        return givenString.trim();
     }
 
 }

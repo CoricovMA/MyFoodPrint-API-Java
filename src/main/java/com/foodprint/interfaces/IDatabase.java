@@ -15,4 +15,7 @@ public interface IDatabase  {
 
     List<Ingredient> getAllIngredients();
 
+    boolean containsKey(String key);
+
+    boolean containsValue(Object value);
 }
