@@ -1,7 +1,10 @@
 package com.foodprint.servlets;
 
 import com.foodprint.interfaces.IServlet;
+import com.foodprint.response.FoodPrintResponse;
 import com.foodprint.response.ResponseGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,11 +25,31 @@ import java.io.PrintWriter;
 public class FoodPrintServlet extends HttpServlet implements IServlet {
 
     private static final ResponseGenerator responseGenerator = new ResponseGenerator();
+    private static final Logger logger = LogManager.getLogger(FoodPrintServlet.class);
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String requestedIngredients = "";
 
-        doClear(response);
+        try{
+            requestedIngredients = request.getParameter("ingredients");
+
+            long startTime = System.currentTimeMillis();
+
+            FoodPrintResponse responseToReturn = responseGenerator.generateResponse(requestedIngredients);
+
+            if(responseToReturn.getStatus() == FoodPrintResponse.Status.SUCCESS){
+                logger.info("Response successfully generated in {}ms.", System.currentTimeMillis()-startTime);
+            }
+
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+
+            response.getWriter().println(responseToReturn.toString());
+        }catch (NullPointerException e){
+            logger.warn("Something went wrong calculating:\"{}\".", requestedIngredients);
+        }
+
     }
 
     @Override
@@ -46,8 +69,6 @@ public class FoodPrintServlet extends HttpServlet implements IServlet {
 
     @Override
     public void doClear(HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        out.flush();
-        out.close();
+
     }
 }

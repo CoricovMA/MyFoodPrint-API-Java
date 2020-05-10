@@ -42,8 +42,6 @@ public class Ingredient extends AbstractFoodPrintObject {
     @JsonProperty("water_usage")
     private double waterUsage;
 
-    // set to empty string vs null.
-    // empty string shows up in jon, null does not
     public Ingredient(){
         this.calories = 0;
         this.carMilesEquivalent = 0;

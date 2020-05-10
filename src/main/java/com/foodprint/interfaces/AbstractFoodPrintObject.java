@@ -3,7 +3,6 @@ package com.foodprint.interfaces;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +11,6 @@ public abstract class AbstractFoodPrintObject {
 
     private static Logger logger = LogManager.getLogger(AbstractFoodPrintObject.class);
     private static ObjectMapper jsonMapper = new JsonMapper()
-            .enable(SerializationFeature.INDENT_OUTPUT)
             .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     public String toString(){

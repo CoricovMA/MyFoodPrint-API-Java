@@ -13,12 +13,15 @@ import java.util.List;
 public class FoodPrintRequest extends AbstractFoodPrintObject implements Request {
 
     private List<Object> requestIngredients;
-    private static IngredientParser ingredientParser = IngredientParser.getInstance();
+    private static final IngredientParser ingredientParser = IngredientParser.getInstance();
 
     @JsonProperty("request_ingredients")
     public List<Object> getRequestIngredients(){
         return this.requestIngredients;
     }
+
+    @JsonProperty("request_errors")
+    public List<Object> errors;
 
     public FoodPrintRequest(String requestedIngredientsText){
         requestIngredients = new ArrayList<>();
@@ -35,6 +38,9 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
 
         if(givenString.contains(",")){
             arrayOfIngredients = givenString.split(",");
+        }else{
+            arrayOfIngredients = new String[1];
+            arrayOfIngredients[0] = givenString;
         }
 
         return arrayOfIngredients;
@@ -45,12 +51,18 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
         for(Object ingr: requestIngredients){
             IngredientRequest ingredient = new IngredientRequest();
 
+            ingredient.setRequestedString((String)ingr);
             ingredient.setQuantity(ingredientParser.getQuantityFromString((String)ingr));
             ingredient.setVolume(ingredientParser.getVolumeFromString((String)ingr));
 
             String ingredientName = (String) ingr;
 
-            ingredientName = ingredientName.replace(ingredient.getVolume(), "");
+            try {
+                ingredientName = ingredientName.replace(ingredient.getVolume(), "");
+            }catch (NullPointerException e){
+                ingredient.setVolume("single(s)");
+            }
+
 
             ingredientName = ingredientParser.removeQuantityFromString(ingredientName);
 

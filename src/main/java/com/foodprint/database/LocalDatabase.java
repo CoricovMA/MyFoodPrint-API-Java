@@ -74,6 +74,7 @@ public class LocalDatabase implements IDatabase {
 
     public static JSONObject getIngredientsJson() {
         File jsonIngredients = new File("/var/lib/jetty/resources/all_ingredients.json");
+//        File jsonIngredients = new File("C:\\Users\\AMC\\IdeaProjects\\MyFoodPrint-API-Java\\src\\main\\resources\\food_json\\all_ingredients.json");
 
         Scanner scanner = null;
 
@@ -92,6 +93,8 @@ public class LocalDatabase implements IDatabase {
         while(scanner.hasNext()){
             jsonString.append(scanner.nextLine());
         }
+
+        scanner.close();
 
         return new JSONObject(jsonString.toString().trim());
     }

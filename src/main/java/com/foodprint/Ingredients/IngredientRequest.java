@@ -2,7 +2,6 @@ package com.foodprint.Ingredients;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.interfaces.AbstractFoodPrintObject;
-import com.foodprint.util.IngredientParser;
 
 public class IngredientRequest extends AbstractFoodPrintObject {
 
@@ -14,6 +13,9 @@ public class IngredientRequest extends AbstractFoodPrintObject {
 
     @JsonProperty("volume")
     private String volume;
+
+    @JsonProperty("requested_string")
+    private String requestedString;
 
     public IngredientRequest(){
         this.ingredient = "";
@@ -57,6 +59,10 @@ public class IngredientRequest extends AbstractFoodPrintObject {
 
     public void setVolume(String volume) {
         this.volume = volume;
+    }
+
+    public void setRequestedString(String originalString){
+        this.requestedString = originalString;
     }
 
 }

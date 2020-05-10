@@ -64,7 +64,6 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
 
     public FoodPrintResponse() {
         this.status = Status.SUCCESS;
-        this.request = new FoodPrintRequest("");
         this.totalCalories = 0;
         this.totalEmissions = 0;
         this.carbonScore = (double) 0;
@@ -101,13 +100,12 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
      */
     public FoodPrintResponse setRequest(FoodPrintRequest request) {
         this.request = request;
-
         return this;
     }
 
-    public FoodPrintResponse setIngredientsResponseList(List<IngredientResponse> responseList) {
+    public void setIngredientsResponseList(List<IngredientResponse> responseList) {
         this.ingredientResponseList = responseList;
-        return this;
+        this.calculateTotals();
     }
 
     public void addIngredientResponse(IngredientResponse ingredientResponse){
@@ -144,6 +142,22 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
 
     public double getCarbonScore() {
         return carbonScore;
+    }
+
+    private void calculateTotals(){
+        double tempTotalEmissions = 0;
+        double tempTotalCalories = 0;
+
+        for(IngredientResponse response: ingredientResponseList){
+
+            tempTotalEmissions += response.getEmissions();
+
+            tempTotalCalories += response.getCalories();
+
+        }
+
+        this.totalCalories = tempTotalCalories;
+        this.totalEmissions = tempTotalEmissions;
     }
 
 }

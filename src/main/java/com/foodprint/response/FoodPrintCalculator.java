@@ -34,14 +34,12 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
         response.setStatus(IngredientResponse.INGREDIENT_STATUS.SUCCESS);
 
         return response;
-
     }
 
     public Ingredient getIngredientFromDb(String givenIngredient) {
-        Ingredient ingredient = null;
         String ingredientKey = "";
         if (database.containsKey(givenIngredient)) {
-            ingredientKey = givenIngredient;
+            return database.getIngredient(givenIngredient);
         }
 
         if (ingredientKey.length() == 0) {
