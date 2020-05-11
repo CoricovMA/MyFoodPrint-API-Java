@@ -7,6 +7,7 @@ import com.foodprint.errors.FoodPrintErrors;
 import com.foodprint.interfaces.Response;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -158,6 +159,13 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
 
         this.totalCalories = tempTotalCalories;
         this.totalEmissions = tempTotalEmissions;
+    }
+
+    public void addErrors(FoodPrintErrors.ERROR ... errorArgs){
+        if(this.errors == null){
+            errors = new ArrayList<>();
+        }
+        errors.addAll(Arrays.asList(errorArgs));
     }
 
 }

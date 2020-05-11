@@ -1,5 +1,7 @@
 package com.foodprint.servlets;
 
+import com.foodprint.database.LocalDatabase;
+import com.foodprint.interfaces.IDatabase;
 import com.foodprint.interfaces.IServlet;
 import com.foodprint.response.FoodPrintResponse;
 import com.foodprint.response.ResponseGenerator;
@@ -26,6 +28,18 @@ public class FoodPrintServlet extends HttpServlet implements IServlet {
 
     private static final ResponseGenerator responseGenerator = new ResponseGenerator();
     private static final Logger logger = LogManager.getLogger(FoodPrintServlet.class);
+
+    /**
+     * Warming up the DB(Map)
+     * The first request takes some time, so a request to the db, whatever it might be
+     * just a ping
+     * will get it ready to go
+     */
+    public void init(){
+        IDatabase database = LocalDatabase.getInstance();
+        database.getIngredient("chicken");
+    }
+
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

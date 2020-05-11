@@ -16,7 +16,7 @@ import java.util.*;
 
 public class LocalDatabase implements IDatabase {
 
-    private static Logger logger = LogManager.getLogger(LocalDatabase.class);
+    private static final Logger logger = LogManager.getLogger(LocalDatabase.class);
     private static LocalDatabase instance;
     private static Map<String, Ingredient> ingredientsMap;
 
@@ -34,16 +34,15 @@ public class LocalDatabase implements IDatabase {
 
     @Override
     public Ingredient getIngredient(String name) {
-        logger.info("Fetching ingredient \"{}\" from local db.", name);
+        try{
 
-        long startTime = System.currentTimeMillis();
+            return ingredientsMap.get(name);
 
-        Ingredient ingredient = ingredientsMap.get(name);
+        }catch (Exception e){
 
-        long endTime = System.currentTimeMillis();
-
-        logger.info("Ingredient {} fetched successfully in {}ms.", name, endTime-startTime);
-        return ingredient;
+            logger.info("Error fetching ingredient \"{}\".", name);
+            return null;
+        }
     }
 
     @Override
@@ -54,8 +53,11 @@ public class LocalDatabase implements IDatabase {
     @Override
     public List<Ingredient> getAllIngredients() {
         List<Ingredient> ingredients = new ArrayList<>();
+
         for(String key: ingredientsMap.keySet()){
+
             ingredients.add(ingredientsMap.get(key));
+
         }
 
         return ingredients;

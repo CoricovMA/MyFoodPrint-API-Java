@@ -21,9 +21,6 @@ import java.io.IOException;
 )
 public class TestServlet extends HttpServlet implements IServlet {
 
-    /*
-    TODO Add object which handles ingredients parsing and shit :)
-     */
     private static final Logger logger = LogManager.getLogger(TestServlet.class);
 
     @Override
