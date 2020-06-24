@@ -36,6 +36,9 @@ public final class IngredientResponse extends AbstractFoodPrintObject {
     @JsonProperty("calories")
     private double calories;
 
+    @JsonProperty("requested_string")
+    private String requestedString;
+
     @JsonProperty("ingredient_status")
     private INGREDIENT_STATUS status;
 
@@ -100,4 +103,7 @@ public final class IngredientResponse extends AbstractFoodPrintObject {
         return calories;
     }
 
+    public void setRequestedString(String requestedString){
+        this.requestedString = requestedString;
+    }
 }

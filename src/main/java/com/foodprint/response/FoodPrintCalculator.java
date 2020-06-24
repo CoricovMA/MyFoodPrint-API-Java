@@ -21,15 +21,16 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
     }
 
     @Override
-    public IngredientResponse call() throws Exception {
+    public IngredientResponse call() {
         IngredientResponse response = new IngredientResponse();
 
         Ingredient ingredient = getIngredientFromDb(request.getIngredient());
         double multiplier = ingredientParser.getQuantityFromVol(request.getVolume());
         response.setCalories(ingredient.getCalories() * multiplier);
-        response.setEmissions(ingredient.getCo2Equivalent()*multiplier);
+        response.setEmissions(ingredient.getCo2Equivalent() * multiplier);
         response.setQuantity(request.getQuantity());
         response.setVolume(request.getVolume());
+        response.setRequestedString(request.getRequestedString());
         response.setName(ingredient.getName());
         response.setStatus(IngredientResponse.INGREDIENT_STATUS.SUCCESS);
 
@@ -37,27 +38,22 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
     }
 
     public Ingredient getIngredientFromDb(String givenIngredient) {
-        String ingredientKey = "";
         if (database.containsKey(givenIngredient)) {
             return database.getIngredient(givenIngredient);
         }
 
-        if (ingredientKey.length() == 0) {
-            String[] arr = givenIngredient.split(" ");
-            for (String word : arr) {
-                if (database.containsKey(word)) {
-                    return database.getIngredient(word);
-                }
+        String[] arr = givenIngredient.split(" ");
+        for (String word : arr) {
+            if (database.containsKey(word)) {
+                return database.getIngredient(word);
             }
         }
 
-        if (ingredientKey.length() == 0) {
-            for (String str : givenIngredient.split(" ")) {
-                List<String> suggestions = ingredientParser.getSpellingMatches(str);
-                for (String suggestion: suggestions){
-                    if(database.containsKey(suggestion)){
-                        return database.getIngredient(suggestion);
-                    }
+        for (String str : givenIngredient.split(" ")) {
+            List<String> suggestions = ingredientParser.getSpellingMatches(str);
+            for (String suggestion : suggestions) {
+                if (database.containsKey(suggestion)) {
+                    return database.getIngredient(suggestion);
                 }
             }
         }

@@ -65,4 +65,8 @@ public class IngredientRequest extends AbstractFoodPrintObject {
         this.requestedString = originalString;
     }
 
+    public String getRequestedString(){
+        return this.requestedString;
+    }
+
 }
