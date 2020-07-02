@@ -1,9 +1,11 @@
 package com.foodprint.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.Ingredients.IngredientRequest;
 import com.foodprint.interfaces.AbstractFoodPrintObject;
 import com.foodprint.interfaces.Request;
+import com.foodprint.parser.ParserFactory;
 import com.foodprint.util.IngredientParser;
 
 import java.util.ArrayList;
@@ -14,31 +16,71 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
 
     private List<Object> requestIngredients;
     private static final IngredientParser ingredientParser = IngredientParser.getInstance();
+    private String requestedIngredientsText;
 
+    @JsonIgnore
     @JsonProperty("request_ingredients")
-    public List<Object> getRequestIngredients(){
+    public List<Object> getRequestIngredients() {
         return this.requestIngredients;
     }
 
     @JsonProperty("request_errors")
     public List<Object> errors;
 
-    public FoodPrintRequest(String requestedIngredientsText){
+    /**
+     * TODO ADD FUNCTIONALITY FOR REQUESTS CONTAINING WEBSITES
+     * 1. Detect if website in request
+     * 2. Use appropriate parser
+     * 3. Generate request from parser (parser should return list of ingredients)
+     *
+     * @param requestedIngredientsText Text of requested ingredients, which will be parsed and transformed to a FoodPrintRequest
+     */
+
+    public FoodPrintRequest(String requestedIngredientsText) {
+
+        this.requestedIngredientsText = requestedIngredientsText;
+
+        setRequestIngredientsList();
+
+        setObjectToIngredientRequest();
+
+    }
+
+    /**
+     * This is where the list of ingredients is set
+     */
+    private void setRequestIngredientsList() {
+        if (requiresParser()) {
+
+            requestIngredients = ParserFactory.getParser(requestedIngredientsText).parseIngredients(requestedIngredientsText);
+
+        } else {
+
+            normalRequest();
+
+        }
+    }
+
+    private boolean requiresParser() {
+        return this.requestedIngredientsText.contains(".com")
+                || this.requestedIngredientsText.contains("https://")
+                || this.requestedIngredientsText.contains("www.");
+    }
+
+    private void normalRequest() {
         requestIngredients = new ArrayList<>();
 
         requestIngredients.addAll(Arrays.asList(splitGivenIngredients(requestedIngredientsText)));
-
-        setObjectToIngredientRequest();
     }
 
-    private String [] splitGivenIngredients(String givenString){
-        String [] arrayOfIngredients = {};
+    private String[] splitGivenIngredients(String givenString) {
+        String[] arrayOfIngredients = {};
 
         givenString = givenString.replace('\n', ',');
 
-        if(givenString.contains(",")){
+        if (givenString.contains(",")) {
             arrayOfIngredients = givenString.split(",");
-        }else{
+        } else {
             arrayOfIngredients = new String[1];
             arrayOfIngredients[0] = givenString;
         }
@@ -46,20 +88,37 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
         return arrayOfIngredients;
     }
 
-    private void setObjectToIngredientRequest(){
+    private void setObjectToIngredientRequest() {
         List<Object> listOfIngredients = new ArrayList<>();
-        for(Object ingr: requestIngredients){
+        for (Object ingredientIter : requestIngredients) {
             IngredientRequest ingredient = new IngredientRequest();
 
-            ingredient.setRequestedString((String)ingr);
-            ingredient.setQuantity(ingredientParser.getQuantityFromString((String)ingr));
-            ingredient.setVolume(ingredientParser.getVolumeFromString((String)ingr));
+            String ingredientToCheck = ingredientIter.toString();
 
-            String ingredientName = (String) ingr;
+            ingredient.setRequestedString(ingredientToCheck);
+
+            if (IngredientParser.hasParentheses(ingredientToCheck)) {
+                String volumeQuantity = ingredientToCheck.
+                        substring(ingredientToCheck.indexOf("(") + 1,
+                                ingredientToCheck.indexOf(")"));
+
+                ingredient.setVolume(ingredientParser.getVolumeFromString(volumeQuantity));
+
+                ingredient.setQuantity(ingredientParser.getQuantityFromString(volumeQuantity));
+
+            } else {
+
+                ingredient.setQuantity(ingredientParser.getQuantityFromString(ingredientToCheck));
+
+                ingredient.setVolume(ingredientParser.getVolumeFromString(ingredientToCheck));
+
+            }
+            
+            String ingredientName = (String) ingredientIter;
 
             try {
                 ingredientName = ingredientName.replace(ingredient.getVolume(), "");
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 ingredient.setVolume("single(s)");
             }
 
@@ -72,7 +131,5 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
 
         this.requestIngredients = listOfIngredients;
     }
-
-
 
 }

@@ -16,7 +16,7 @@ public abstract class AbstractFoodPrintObject {
     public String toString(){
         String objectString = "";
         try {
-            objectString =  jsonMapper.writeValueAsString(this);
+            objectString =  jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
         } catch (JsonProcessingException e) {
             logger.warn("Something went wrong.", e);
         }

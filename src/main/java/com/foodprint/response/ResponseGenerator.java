@@ -35,7 +35,6 @@ public class ResponseGenerator {
 
             } catch (InterruptedException e) {
 
-
                 logger.warn("Error adding IngredientResponse {} to result list.", ingredientRequest, e);
 
             } catch (ExecutionException e) {

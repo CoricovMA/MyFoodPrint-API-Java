@@ -142,6 +142,10 @@ public class IngredientParser {
     public String removeQuantityFromString(String givenString){
         double quantity = getQuantityFromString(givenString);
 
+        if(hasParentheses(givenString)){
+            return givenString.substring(givenString.indexOf(")")+1).trim();
+        }
+
         if(givenString.contains(String.valueOf(quantity))){
             givenString = givenString.replace(String.valueOf(quantity), "");
         }else if(givenString.contains(String.valueOf((int)Math.floor(quantity)))){
@@ -151,6 +155,10 @@ public class IngredientParser {
         }
 
         return givenString.trim();
+    }
+
+    public static boolean hasParentheses(String givenIngredient) {
+        return givenIngredient.contains("(") && givenIngredient.contains(")");
     }
 
 }
