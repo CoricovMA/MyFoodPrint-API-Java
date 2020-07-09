@@ -1,14 +1,19 @@
 package com.foodprint.servlets;
 
+import com.foodprint.database.LocalDatabase;
 import com.foodprint.interfaces.IServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import scala.tools.nsc.classpath.FileUtils;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 @WebServlet(
         name = "MyFoodPrint-API",
@@ -36,8 +41,20 @@ public class TestServlet extends HttpServlet implements IServlet {
         response.getWriter().write("Path: " + request.getPathTranslated() + "</br>");
         response.getWriter().write("Path: " + request.getRequestURI() + "</br>");
         response.getWriter().write("Path: " + request.getRequestURL() + "</br>");
+        response.getWriter().write("servlet " + getServletContext().getContextPath() + "</br>");
 
+        File f = new File("WEB-INF/classes/food_json/all_ingredients.json");
 
+        Scanner scanner = new Scanner(f);
+
+        while(scanner.hasNext()){
+            response.getWriter().println(scanner.nextLine());
+        }
+
+        scanner.close();
+
+        response.getWriter().println("Here" + " "+ f.getAbsolutePath() + "</br>");
+        response.getWriter().println(f);
         switch (action) {
             case "/":
                 doHome(request, response);

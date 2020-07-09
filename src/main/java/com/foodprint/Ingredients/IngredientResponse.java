@@ -3,6 +3,8 @@ package com.foodprint.Ingredients;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.foodprint.interfaces.AbstractFoodPrintObject;
 
+import java.text.DecimalFormat;
+
 public final class IngredientResponse extends AbstractFoodPrintObject {
 
     public enum INGREDIENT_STATUS{
@@ -80,7 +82,8 @@ public final class IngredientResponse extends AbstractFoodPrintObject {
     }
 
     public void setCalories(double calories) {
-        this.calories = calories;
+        DecimalFormat df = new DecimalFormat("###.###");
+        this.calories = Double.parseDouble(df.format(calories));
     }
 
     public String getVolume() {

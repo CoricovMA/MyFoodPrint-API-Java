@@ -32,12 +32,10 @@ public class FoodPrintServlet extends HttpServlet implements IServlet {
     /**
      * Warming up the DB(Map)
      * The first request takes some time, so a request to the db, whatever it might be
-     * just a ping
-     * will get it ready to go
+     * just a ping will get it ready to go
      */
     public void init(){
         IDatabase database = LocalDatabase.getInstance();
-        database.getIngredient("chicken");
     }
 
 

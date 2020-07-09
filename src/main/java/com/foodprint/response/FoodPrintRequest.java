@@ -18,7 +18,6 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
     private static final IngredientParser ingredientParser = IngredientParser.getInstance();
     private String requestedIngredientsText;
 
-    @JsonIgnore
     @JsonProperty("request_ingredients")
     public List<Object> getRequestIngredients() {
         return this.requestIngredients;

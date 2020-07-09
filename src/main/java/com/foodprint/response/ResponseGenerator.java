@@ -20,8 +20,10 @@ public class ResponseGenerator {
         FoodPrintRequest request = new FoodPrintRequest(requestString);
         FoodPrintResponse response = new FoodPrintResponse().setRequest(request);
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
-        logger.info("Instantiated executor with {} threads.", request.getRequestIngredients().size());
+        int threadCount = (request.getRequestIngredients().size() % 10) + 1;
+
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadCount);
+        logger.info("Instantiated executor with {} threads.", threadCount);
 
         List<IngredientResponse> resultList = new ArrayList<>();
 

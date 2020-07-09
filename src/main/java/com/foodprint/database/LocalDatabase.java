@@ -3,15 +3,17 @@ package com.foodprint.database;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.foodprint.Ingredients.Ingredient;
 import com.foodprint.interfaces.IDatabase;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.servlet.ServletContext;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
 
 public class LocalDatabase implements IDatabase {
@@ -19,9 +21,16 @@ public class LocalDatabase implements IDatabase {
     private static final Logger logger = LogManager.getLogger(LocalDatabase.class);
     private static LocalDatabase instance;
     private static Map<String, Ingredient> ingredientsMap;
+    private static ServletContext servletContext;
 
     private LocalDatabase(){
-        ingredientsMap = getIngredientsMapFromJson(getIngredientsJson());
+        try {
+            ingredientsMap = getIngredientsMapFromJson(getIngredientsJson());
+        } catch (URISyntaxException e) {
+            logger.error("URISyntaxException while getting ingredient json. {}", e.getMessage());
+        } catch (FileNotFoundException e) {
+            logger.error("FileNotFoundException while getting ingredient json. {}", e.getMessage());
+        }
     }
 
     public static IDatabase getInstance() {
@@ -74,31 +83,21 @@ public class LocalDatabase implements IDatabase {
         return ingredientsMap.containsValue(ingredient);
     }
 
-    public static JSONObject getIngredientsJson() {
-        File jsonIngredients = new File("/var/lib/jetty/resources/all_ingredients.json");
-//        File jsonIngredients = new File("C:\\Users\\AMC\\IdeaProjects\\MyFoodPrint-API-Java\\src\\main\\resources\\food_json\\all_ingredients.json");
+    public static JSONObject getIngredientsJson() throws URISyntaxException, FileNotFoundException {
 
-        Scanner scanner = null;
+        String data = null;
+        String fileName = "all_ingredients.json";
 
-        try {
+        URL url = LocalDatabase.class.getClassLoader().getResource(fileName);
 
-            scanner = new Scanner(new FileReader(jsonIngredients));
-
-        } catch (FileNotFoundException e) {
-
-            logger.warn("error while instantiating BufferedReader.", e);
-
+        try{
+            assert url != null;
+            data = Files.toString(new File(url.toURI()), Charsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        StringBuilder jsonString = new StringBuilder();
-
-        while(scanner.hasNext()){
-            jsonString.append(scanner.nextLine());
-        }
-
-        scanner.close();
-
-        return new JSONObject(jsonString.toString().trim());
+        return new JSONObject(data);
     }
 
     private Map<String, Ingredient> getIngredientsMapFromJson(JSONObject ingredientsJson){
@@ -127,5 +126,9 @@ public class LocalDatabase implements IDatabase {
         return mapToReturn;
     }
 
+
+    public static void setContext(ServletContext context){
+        servletContext = context;
+    }
 }
 
