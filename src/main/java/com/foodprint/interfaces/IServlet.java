@@ -5,9 +5,12 @@ import com.foodprint.database.LocalDatabase;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 
 public interface IServlet {
+
+    static File logFile = new File("/var/lib/jetty/logs/app.log");
 
     IDatabase database = LocalDatabase.getInstance();
 
