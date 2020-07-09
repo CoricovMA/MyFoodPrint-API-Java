@@ -20,7 +20,7 @@ public class ResponseGenerator {
         FoodPrintRequest request = new FoodPrintRequest(requestString);
         FoodPrintResponse response = new FoodPrintResponse().setRequest(request);
 
-        int threadCount = (request.getRequestIngredients().size() % 10) + 1;
+        int threadCount = (request.getRequestIngredients().size() % 10)+1;
 
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadCount);
         logger.info("Instantiated executor with {} threads.", threadCount);
@@ -37,11 +37,11 @@ public class ResponseGenerator {
 
             } catch (InterruptedException e) {
 
-                logger.warn("Error adding IngredientResponse {} to result list.", ingredientRequest, e);
+                logger.warn("Error adding IngredientResponse {} to result list. {}", ingredientRequest, e.getCause());
 
             } catch (ExecutionException e) {
 
-                logger.warn("Execution exception while trying to add {} to result list.", ingredientRequest );
+                logger.warn("Execution exception while trying to add {} to result list. {}", ingredientRequest, e.getCause());
 
             }
 

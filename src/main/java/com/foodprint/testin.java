@@ -9,7 +9,8 @@ import com.foodprint.util.ObjectParser;
 public class testin {
 
     public static void main(String[] args) {
-        String ingr1 = "https://www.ricardocuisine.com/en/recipes/8766-family-style-spicy-thai-beef#comments";
+        String ingr1 = "https://www.ricardocuisine.com/en/recipes/8752-quinoa-bowl-with-salmon-zucchini-and-sweet-potatoes";
+//        String ingr1 = "1 kg chicken";
         RicParser parser = new RicParser();
         IngredientParser ingredientParser = IngredientParser.getInstance();
 
