@@ -7,6 +7,7 @@ import org.languagetool.language.AmericanEnglish;
 import org.languagetool.language.BritishEnglish;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,7 @@ public class IngredientParser {
      * @return list of possible replacements
      */
     public List<String> getSpellingMatches(String givenString) {
-        List<String> matches = null;
+        List<String> matches = new ArrayList<>();
         try {
             matches = languageTool.check(givenString).get(0).getSuggestedReplacements();
         } catch (IOException e) {

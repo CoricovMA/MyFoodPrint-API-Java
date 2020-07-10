@@ -1,6 +1,8 @@
 package com.foodprint.servlets;
 
 import com.foodprint.interfaces.IServlet;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,6 +14,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 @WebServlet(
@@ -22,19 +26,19 @@ import java.util.Scanner;
 public class LogServlet extends HttpServlet implements IServlet {
 
     private static File logDirectory;
-    private static final String logDirectoryPath = "/var/lib/jetty/logs";
     private static final Logger logger = LogManager.getLogger(LogServlet.class);
 
-    public void init() {
-        logger.info("Initializing Log servlet.");
-        try {
-            logDirectory = new File(logDirectoryPath);
-            logDirectory.mkdir();
-        }catch (Exception e){
-            logger.warn("Error creating log directory.");
-        }
-        logger.info("Initializing log directory at {}", logDirectoryPath);
-    }
+//    public void init() {
+//        logger.info("Initializing Log servlet.");
+//        try {
+//            URL url = LogServlet.class.getClassLoader().getResource("logs/app.log");
+//            logDirectory = new File(url.toURI());
+//            logDirectory.mkdir();
+//        } catch (Exception e) {
+//            logger.warn("Error creating log directory.");
+//        }
+//        logger.info("Initializing log directory.");
+//    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -48,7 +52,7 @@ public class LogServlet extends HttpServlet implements IServlet {
 
             if (desiredLogs.contains("all")) {
 
-                getAllLogs(request, response);
+                getAllLogs(response);
 
             } else if (desiredLogs.contains("date")) {
 
@@ -87,14 +91,30 @@ public class LogServlet extends HttpServlet implements IServlet {
         out.close();
     }
 
-    private void getAllLogs(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void getAllLogs(HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        Scanner scanner = new Scanner(new FileReader("/var/lib/jetty/logs/app.log"));
-        out.flush();
 
-        while(scanner.hasNext()){
-            out.println(scanner.nextLine() + "</br>");
+        URL url = LogServlet.class.getClassLoader().getResource("logs/app.log");
+        String data = null;
+
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            File f = new File(url.toURI());
+
+            Scanner scanner = new Scanner(f);
+
+            while(scanner.hasNext()){
+                sb.append(scanner.nextLine());
+            }
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
+
+        out.println(sb.toString());
+        out.println("hello world");
+        out.println(url);
     }
 
     private void getDateLogs(HttpServletRequest request, HttpServletResponse response, String date) throws IOException {

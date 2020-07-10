@@ -36,7 +36,7 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
      * Any errors that happened
      */
     @JsonProperty("errors")
-    private List<FoodPrintErrors.ERROR> errors;
+    private List<String> errors;
 
     /**
      * Response ingredients
@@ -125,7 +125,7 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
         return request;
     }
 
-    public List<FoodPrintErrors.ERROR> getErrors() {
+    public List<String> getErrors() {
         return errors;
     }
 
@@ -165,7 +165,8 @@ public class FoodPrintResponse extends AbstractFoodPrintObject implements Respon
         if(this.errors == null){
             errors = new ArrayList<>();
         }
-        errors.addAll(Arrays.asList(errorArgs));
+        for(FoodPrintErrors.ERROR error : errorArgs)
+            errors.add(error.toString());
     }
 
 }

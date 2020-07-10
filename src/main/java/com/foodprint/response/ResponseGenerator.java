@@ -2,6 +2,7 @@ package com.foodprint.response;
 
 import com.foodprint.Ingredients.IngredientRequest;
 import com.foodprint.Ingredients.IngredientResponse;
+import com.foodprint.errors.FoodPrintErrors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +21,7 @@ public class ResponseGenerator {
         FoodPrintRequest request = new FoodPrintRequest(requestString);
         FoodPrintResponse response = new FoodPrintResponse().setRequest(request);
 
-        int threadCount = (request.getRequestIngredients().size() % 10)+1;
+        int threadCount = getThreadCount(request.getRequestIngredients().size());
 
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadCount);
         logger.info("Instantiated executor with {} threads.", threadCount);
@@ -37,11 +38,16 @@ public class ResponseGenerator {
 
             } catch (InterruptedException e) {
 
-                logger.warn("Error adding IngredientResponse {} to result list. {}", ingredientRequest, e.getCause());
+                logger.warn("Error adding IngredientResponse {} to result list.", ((IngredientRequest) ingredientRequest).getRequestedString());
+                e.printStackTrace();
 
             } catch (ExecutionException e) {
 
-                logger.warn("Execution exception while trying to add {} to result list. {}", ingredientRequest, e.getCause());
+                logger.warn("Execution exception while trying to add {} to result list.", ((IngredientRequest) ingredientRequest).getRequestedString());
+                response.addErrors(
+                        FoodPrintErrors
+                                .ERROR.NO_INGREDIENT_FOUND
+                                .setRequestedIngredient(((IngredientRequest) ingredientRequest).getRequestedString()));
 
             }
 
@@ -54,5 +60,12 @@ public class ResponseGenerator {
         return response;
     }
 
+
+    private int getThreadCount(int ingredientCount){
+        if(ingredientCount % 10 == 0){
+            return 1;
+        }
+        return ingredientCount % 10;
+    }
 
 }

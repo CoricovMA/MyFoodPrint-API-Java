@@ -1,5 +1,7 @@
 package com.foodprint.errors;
 
+import org.json.JSONObject;
+
 public class FoodPrintErrors {
 
     public enum ERROR{
@@ -20,8 +22,13 @@ public class FoodPrintErrors {
             this.message = message;
         }
 
-        public void setRequestedIngredient(String requestedIngredient){
-            this.requestedIngredientString = requestedIngredient;
+        private void setRequestedIngredientString(String requestedIngredientString){
+            this.requestedIngredientString = requestedIngredientString;
+        }
+
+        public ERROR setRequestedIngredient(String requestedIngredient){
+            this.setRequestedIngredientString(requestedIngredient);
+            return this;
         }
 
         public String getMessage(){
@@ -33,7 +40,16 @@ public class FoodPrintErrors {
         }
 
         public String toString(){
-            return this.message + " " + errorCode;
+            JSONObject errorJson = new JSONObject();
+            errorJson.put("message", this.message);
+            errorJson.put("error_code", this.errorCode);
+
+            if(this.requestedIngredientString != null){
+                errorJson.put("requested_ingredient_string", this.requestedIngredientString);
+                return errorJson.toString().trim();
+            }
+
+            return errorJson.toString().trim();
         }
 
     }
