@@ -73,30 +73,50 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
     }
 
     private String[] splitGivenIngredients(String givenString) {
-        String[] arrayOfIngredients = {};
+        String[] arrayOfIngredients;
 
         givenString = givenString.replace('\n', ',');
 
-        if (givenString.contains(",")) {
+        if (givenString.contains(",") && isValidArrayOfIngredients(givenString)) {
             arrayOfIngredients = givenString.split(",");
         } else {
             arrayOfIngredients = new String[1];
+
+            if(givenString.contains(",")){
+                givenString = givenString.replace(",", "");
+            }
+
             arrayOfIngredients[0] = givenString;
         }
 
         return arrayOfIngredients;
     }
 
+    private boolean isValidArrayOfIngredients(String givenIngredientString){
+        String [] arrayOfPotentialIngredients = givenIngredientString.split(",");
+
+        if(arrayOfPotentialIngredients.length > 2){
+            return true;
+        }
+
+        if(arrayOfPotentialIngredients.length == 1){
+            return true;
+        }else return arrayOfPotentialIngredients.length == 2 && arrayOfPotentialIngredients[1].trim().split(" ").length > 1;
+
+    }
+
     private void setObjectToIngredientRequest() {
         List<Object> listOfIngredients = new ArrayList<>();
+
         for (Object ingredientIter : requestIngredients) {
             IngredientRequest ingredient = new IngredientRequest();
 
             String ingredientToCheck = ingredientIter.toString();
 
-            ingredient.setRequestedString(ingredientToCheck);
+            ingredient.setRequestedString(ingredientToCheck.trim());
 
             if (IngredientParser.hasParentheses(ingredientToCheck)) {
+
                 String volumeQuantity = ingredientToCheck.
                         substring(ingredientToCheck.indexOf("(") + 1,
                                 ingredientToCheck.indexOf(")"));
@@ -121,14 +141,15 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
                 ingredient.setVolume("single(s)");
             }
 
-
             ingredientName = ingredientParser.removeQuantityFromString(ingredientName);
 
             ingredient.setIngredient(ingredientName);
+
             listOfIngredients.add(ingredient);
         }
 
         this.requestIngredients = listOfIngredients;
+
     }
 
 }
