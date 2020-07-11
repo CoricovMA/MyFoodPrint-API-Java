@@ -86,7 +86,7 @@ public class LocalDatabase implements IDatabase {
     public static JSONObject getIngredientsJson() throws URISyntaxException, FileNotFoundException {
 
         String data = null;
-        String fileName = "food_json/all_ingredients.json";
+        String fileName = "food/all_ingredients.json";
 
         URL url = LocalDatabase.class.getClassLoader().getResource(fileName);
 

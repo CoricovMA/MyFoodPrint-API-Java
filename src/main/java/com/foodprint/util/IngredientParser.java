@@ -54,6 +54,7 @@ public class IngredientParser {
         volumes.put("pounds", 0.453592);
         volumes.put("cloves", 0.013);
         volumes.put("clove", 0.013);
+        volumes.put("single(s)", 1.0);
     }
 
     public void setLanguage(LANGUAGE desiredLanguage) {

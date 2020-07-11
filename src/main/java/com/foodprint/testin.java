@@ -9,7 +9,7 @@ import com.foodprint.util.ObjectParser;
 public class testin {
 
     public static void main(String[] args) {
-        String ingr1 = "1 ripe avocado, cubed";
+        String ingr1 = "ripe avocado, cubed";
 //        String ingr1 = "1 kg chicken";
         RicParser parser = new RicParser();
         IngredientParser ingredientParser = IngredientParser.getInstance();

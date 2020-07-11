@@ -5029,7 +5029,7 @@
       "water_usage": 0
     },
     {
-      "name": "Pumpkinseed sunfish",
+      "name": "Pumpkin seed sunfish",
       "food_group": "Aquatic foods",
       "food_subgroup": "Fishes",
       "co2_per_kg": 0,
@@ -8899,7 +8899,7 @@
       "water_usage": 0
     },
     {
-      "name": "Pomes",
+      "name": "Apple",
       "food_group": "Fruits",
       "food_subgroup": "Pomes",
       "co2_per_kg": 1.1,
@@ -9204,6 +9204,16 @@
       "food_subgroup": "Berries",
       "co2_per_kg": 1.1,
       "car_miles_eq": 2.5,
+      "calories": 0,
+      "energy_usage": 0,
+      "water_usage": 0
+    },
+    {
+      "name": "Pumpkin",
+      "food_group": "Gourds",
+      "food_subgroup": "Gourds",
+      "co2_per_kg": 0,
+      "car_miles_eq": 0,
       "calories": 0,
       "energy_usage": 0,
       "water_usage": 0
