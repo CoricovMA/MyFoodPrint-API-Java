@@ -16,7 +16,7 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
 
     private List<Object> requestIngredients;
     private static final IngredientParser ingredientParser = IngredientParser.getInstance();
-    private String requestedIngredientsText;
+    private final String requestedIngredientsText;
 
     @JsonProperty("request_ingredients")
     public List<Object> getRequestIngredients() {
@@ -50,9 +50,11 @@ public class FoodPrintRequest extends AbstractFoodPrintObject implements Request
      */
     private void setRequestIngredientsList() {
         if (requiresParser()) {
+            try {
+                requestIngredients = ParserFactory.getParser(requestedIngredientsText).parseIngredients(requestedIngredientsText);
+            }catch (NullPointerException npe){
 
-            requestIngredients = ParserFactory.getParser(requestedIngredientsText).parseIngredients(requestedIngredientsText);
-
+            }
         } else {
 
             normalRequest();
