@@ -5,14 +5,15 @@ import com.foodprint.response.FoodPrintResponse;
 import com.foodprint.response.ResponseGenerator;
 import com.foodprint.util.IngredientParser;
 import com.foodprint.util.ObjectParser;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class testin {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, CsvValidationException {
         File f = new File("C:\\Users\\AMC\\IdeaProjects\\MyFoodPrint-API-Java\\src\\main\\resources\\food\\fruits_and_veg_singles.csv");
         Scanner scanner = null;
         try {
@@ -20,9 +21,12 @@ public class testin {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        while(scanner.hasNext()){
-            System.out.println(scanner.nextLine().split(","));
+        CSVReader csvReader = new CSVReader(new FileReader(f));
+        String []record;
+        while((record = csvReader.readNext()) != null) {
+            for(String line : record){
+                System.out.println(line);
+            }
         }
 
 //        String ingr1 = "ripe avocado, cubed";
