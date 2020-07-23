@@ -42,7 +42,7 @@ public class LocalDatabase implements IDatabase {
     }
 
     @Override
-    public Object getIngredient(String name) {
+    public Ingredient getIngredient(String name) {
         try{
 
             return ingredientsMap.get(name);

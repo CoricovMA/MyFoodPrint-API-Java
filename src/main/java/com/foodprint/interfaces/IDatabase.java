@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IDatabase  {
 
-    Object getIngredient(String name);
+    Ingredient getIngredient(String name);
 
     void addIngredient(Ingredient ingredientToAdd);
 

@@ -36,8 +36,8 @@ public class SinglesDB implements IDatabase {
     }
 
     @Override
-    public Object getIngredient(String name) {
-        return 
+    public Ingredient getIngredient(String name) {
+        return null;
     }
 
     @Override

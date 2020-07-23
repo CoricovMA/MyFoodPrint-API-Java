@@ -1,7 +1,5 @@
 package com.foodprint.servlets;
 
-import com.foodprint.database.LocalDatabase;
-import com.foodprint.interfaces.IDatabase;
 import com.foodprint.interfaces.IServlet;
 import com.foodprint.response.FoodPrintResponse;
 import com.foodprint.response.ResponseGenerator;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(
         name = "FoodPrintServlet",
@@ -24,7 +21,7 @@ import java.io.PrintWriter;
                 "/foodprint/"
         }
 )
-public class FoodPrintServlet extends HttpServlet implements IServlet {
+public class FoodPrintServlet extends HttpServlet{
 
     private static final ResponseGenerator responseGenerator = new ResponseGenerator();
     private static final Logger logger = LogManager.getLogger(FoodPrintServlet.class);
@@ -32,26 +29,30 @@ public class FoodPrintServlet extends HttpServlet implements IServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String requestedIngredients = "";
-
+        FoodPrintResponse responseToReturn = null;
         try{
             requestedIngredients = request.getParameter("ingredients");
 
             long startTime = System.currentTimeMillis();
 
-            FoodPrintResponse responseToReturn = responseGenerator.generateResponse(requestedIngredients);
+            responseToReturn = responseGenerator.generateResponse(requestedIngredients);
 
             if(responseToReturn.getStatus() == FoodPrintResponse.Status.SUCCESS){
                 logger.info("Response successfully generated in {}ms.", System.currentTimeMillis()-startTime);
             }
 
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
 
-            response.getWriter().println(responseToReturn.toString());
         }catch (NullPointerException e){
             logger.warn("Something went wrong calculating:\"{}\".", requestedIngredients);
         }
 
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "*");
+        response.addHeader("Access-Control-Allow-Headers", "*");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        response.getWriter().println(responseToReturn.toString());
     }
 
     @Override
@@ -66,11 +67,6 @@ public class FoodPrintServlet extends HttpServlet implements IServlet {
 
     @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
-
-    }
-
-    @Override
-    public void doClear(HttpServletResponse response) throws IOException {
 
     }
 }
