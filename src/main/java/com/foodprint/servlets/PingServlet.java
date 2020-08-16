@@ -25,6 +25,9 @@ public class PingServlet extends HttpServlet implements IServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "*");
+        response.addHeader("Access-Control-Allow-Headers", "*");
         response.getWriter().println("Pong.");
         logger.info("Server was pinged. We ponged back.");
     }
