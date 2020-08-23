@@ -16,6 +16,8 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
     private final IngredientRequest request;
     private static final IngredientParser ingredientParser = IngredientParser.getInstance();
 
+    private static final String [] charsToCheck = {",", ".", "[", "]", "{", "}", "(", ")", ":"};
+
     public FoodPrintCalculator(IngredientRequest request) {
         this.request = request;
     }
@@ -38,6 +40,8 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
     }
 
     public Ingredient getIngredientFromDb(String givenIngredient) {
+        givenIngredient = ingredientCleaner(givenIngredient);
+        
         if (database.containsKey(givenIngredient)) {
             return database.getIngredient(givenIngredient);
         }
@@ -61,5 +65,15 @@ public class FoodPrintCalculator implements Callable<IngredientResponse> {
         return null;
     }
 
+
+    private static String ingredientCleaner(String givenIngredient){
+        for(String chr: charsToCheck){
+            if(givenIngredient.contains(chr)){
+                givenIngredient = givenIngredient.replaceAll(chr, "");
+            }
+        }
+
+        return givenIngredient;
+    }
 
 }
