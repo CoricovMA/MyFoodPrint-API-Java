@@ -1,0 +1,59 @@
+2020-07-09 20:59:26,493 [main] INFO  com.foodprint.util.IngredientParser - Initialized language tool to American english (default).
+2020-07-09 20:59:26,495 [main] INFO  com.foodprint.util.IngredientParser - Doing first check for good subsequent speed.
+2020-07-09 20:59:28,293 [main] INFO  com.foodprint.response.ResponseGenerator - Instantiated executor with 6 threads.
+2020-07-09 20:59:28,430 [main] INFO  com.foodprint.database.LocalDatabase - Instantiating local database.
+2020-07-09 20:59:28,473 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "ripe avocado, cubed",
+  "quantity" : 1.0,
+  "volume" : "single(s)",
+  "requested_string" : "1 ripe avocado, cubed"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,497 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "rounds",
+  "quantity" : 1.0,
+  "volume" : "single(s)",
+  "requested_string" : "2 small sweet potatoes, peeled and cut into 1/2-inch (1 cm) rounds"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,547 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "quinoa, rinsed and drained",
+  "quantity" : 180.0,
+  "volume" : "g",
+  "requested_string" : "1 cup (180 g) quinoa, rinsed and drained"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,585 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "lemon, zest finely grated",
+  "quantity" : 1.0,
+  "volume" : "single(s)",
+  "requested_string" : "1 lemon, zest finely grated"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,604 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "skinless salmon fillet, cut into 4 pieces",
+  "quantity" : 675.0,
+  "volume" : "g",
+  "requested_string" : "1 1/2 lb (675 g) skinless salmon fillet, cut into 4 pieces"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,643 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "zucchini, cut into thin spirals or julienned",
+  "quantity" : 2.0,
+  "volume" : "single(s)",
+  "requested_string" : "2 zucchini, cut into thin spirals or julienned"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,661 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "cherry tomatoes, halved",
+  "quantity" : 280.0,
+  "volume" : "g",
+  "requested_string" : "2 cups (280 g) cherry tomatoes, halved"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,662 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "",
+  "quantity" : 0.0,
+  "volume" : "single(s)",
+  "requested_string" : "Spicy mayonnaise, for serving (see recipe)"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,678 [main] WARN  com.foodprint.response.ResponseGenerator - Execution exception while trying to add {
+  "ingredient" : "roasted pumpkin seeds",
+  "quantity" : 40.0,
+  "volume" : "g",
+  "requested_string" : "1/4 cup (40 g) roasted pumpkin seeds"
+} to result list. java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+2020-07-09 20:59:28,678 [main] INFO  com.foodprint.response.ResponseGenerator - Shutting down executor.

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+JETTY_HOME="/opt/jetty"
+JETTY_BASE="/opt/jetty/my_base"
+JETTY_USER="jetty"
+JETTY_PORT="8080"
+JETTY_HOST="127.0.0.1"
+
+echo "JETTY_HOME=${JETTY_HOME}\'
+JETTY_BASE=${JETTY_BASE}\'
+JETTY_USER=${JETTY_USER}\'
+JETTY_PORT=${JETTY_PORT}\'
+JETTY_HOST=${JETTY_HOST}" >> /etc/default/jetty
